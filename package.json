@@ -12,10 +12,7 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "engines": {
-    "node": "8.1.1",
-    "npm": "5.0.3"
-  },
+  
   "author": "Olagunju Abdurahman",
   "license": "ISC",
   "dependencies": {
