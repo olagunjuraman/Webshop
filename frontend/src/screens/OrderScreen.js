@@ -71,7 +71,7 @@ const OrderScreen = ({ match, history }) => {
       document.body.appendChild(script);
     };
 
-    if (!order || successPay || successDeliver) {
+    if (!order || successPay || successDeliver || order._id !== orderId) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVERED_RESET });
       dispatch(getOrderDetails(orderId));
@@ -82,7 +82,7 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, order, userInfo]);
+  }, [dispatch, orderId, successPay, successDeliver, order, userInfo, history]);
 
   const successPaymentHandler = async (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
@@ -142,7 +142,7 @@ const OrderScreen = ({ match, history }) => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`https://my-shop-bucket-430.s3.eu-west-2.amazonaws.com/${item.image}`}
                             alt={item.name}
                             fluid
                             rounded

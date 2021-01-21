@@ -54,7 +54,12 @@ const CartScreen = ({ match, location, history }) => {
               <ListGroup.Item key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                    <Image
+                      src={`https://my-shop-bucket-430.s3.eu-west-2.amazonaws.com/${item.image}`}
+                      alt={item.name}
+                      fluid
+                      rounded
+                    />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
@@ -81,8 +86,8 @@ const CartScreen = ({ match, location, history }) => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={e =>{
-                        removeFromCartHandler(item.product)
+                      onClick={(e) => {
+                        removeFromCartHandler(item.product);
                       }}
                     >
                       <i className="fas fa-trash"></i> Remove

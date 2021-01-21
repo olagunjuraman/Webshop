@@ -1,41 +1,36 @@
-import path from "path";
 import express from "express";
-import multer from "multer";
+import uuid from "uuid";
+import dotenv from "dotenv";
+import AWS from "aws-sdk";
+import { admin, protect } from "../middlewares/authMiddleware.js";
+
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename(req, file, cb) {
-    cb(
-      null,
-      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-    );
-  },
+dotenv.config();
+
+const s3 = new AWS.S3({
+  accessKeyId: process.env.Access_Key_ID,
+  secretAccessKey: process.env.Access_Secret_Key,
+  signatureVersion: "v4",
+  endpoint: "s3.eu-west-2.amazonaws.com",
+  region: "eu-west-2",
 });
 
-function checkFileType(file, cb) {
-  const filetypes = /jpg|jpeg|png/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
+AWS.config.update({ signatureVersion: "v4" });
 
-  if (extname && mimetype) {
-    return cb(null, true);
-  } else {
-    cb("Images only!");
-  }
-}
+router.get("/", protect, admin, (req, res) => {
+  const key = `${req.user._id}/${uuid()}.jpeg`;
 
-const upload = multer({
-  storage,
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-});
-
-router.post("/", upload.single("image"), (req, res) => {
-  res.send(`/${req.file.path}`);
+  s3.getSignedUrl(
+    "putObject",
+    {
+      Bucket: "my-shop-bucket-430",
+      Expires: 100000,
+      ContentType: "image/jpeg",
+      Key: key,
+    },
+    (err, url) => res.send({ key, url })
+  );
 });
 
 export default router;

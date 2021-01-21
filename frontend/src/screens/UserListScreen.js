@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,7 @@ const UserListScreen = ({ history }) => {
 
   const { loading, error, users } = userList;
 
-  const {success: successDelete} = useSelector((state) => state.userList)
+  const { success: successDelete } = useSelector((state) => state.userList);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {

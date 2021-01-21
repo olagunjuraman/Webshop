@@ -86,7 +86,7 @@ const PlaceOrderScreen = ({ history }) => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`https://my-shop-bucket-430.s3.eu-west-2.amazonaws.com/${item.image}`}
                             alt={item.name}
                             fluid
                             rounded

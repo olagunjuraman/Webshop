@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUserDetails } from "../actions/userActions";

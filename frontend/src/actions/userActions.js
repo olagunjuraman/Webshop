@@ -15,7 +15,6 @@ import {
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_FAIL,
   USER_UPDATE_PROFILE_SUCCESS,
-  USER_UPDATE_PROFILE_RESET,
   USER_DETAILS_RESET,
   USER_DELETE_REQUEST,
   USER_DELETE_SUCCESS,
@@ -24,10 +23,12 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
   USER_UPDATE_FAIL,
-  USER_UPDATE_RESET,
 } from "../constants/userConstants";
 import axios from "axios";
-import { ORDER_LIST_MY_RESET, ORDER_DELIVERED_RESET } from "../constants/orderConstants";
+import {
+  ORDER_LIST_MY_RESET,
+  ORDER_DELIVERED_RESET,
+} from "../constants/orderConstants";
 import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 
 export const login = (email, password) => async (dispatch) => {
@@ -204,6 +205,7 @@ export const listUsers = () => async (dispatch, getState) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.setItem("cartItems", JSON.stringify([]));
+
   dispatch({
     type: USER_LOGOUT,
   });
