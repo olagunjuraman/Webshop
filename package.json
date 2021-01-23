@@ -7,12 +7,12 @@
   "scripts": {
     "start": " pm2 start backend/server.js",
     "stop" : " pm2 stop backend/server.js",
-    "server": "nodemon backend/server",
+    "server": "npm install",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "build": "npm i && npm run build --prefix frontend"
+    "build": "npm run build --prefix frontend"
   },
   "author": "Olagunju Abdurahman",
   "license": "ISC",
