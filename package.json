@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": " pm2 start backend/server",
-    "stop" : " pm2 stop backend/server",
+    "start": " pm2 start backend/server.js",
+    "stop" : " pm2 stop backend/server.js",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
