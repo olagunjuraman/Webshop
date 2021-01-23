@@ -9,13 +9,9 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-const __dirname = path.resolve();
+const __dirname = path.resolve()
+dotenv.config({path: path.join(__dirname, "env") });
 
-dotenv.config({ path: path.join(__dirname, ".env") });
-
-console.log(__dirname);
-
-console.log(process.env.MONGO_URI);
 
 connectDB();
 
