@@ -8,6 +8,15 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  
+env:
+   NODE_ENV: ${{secrets.NODE_ENV}}
+   PORT: ${{secrets.PORT}}
+   MONGO_URI: ${{secrets.MONGO_URI}}
+   PAYPAL_CLIENT_ID: ${{secrets.PAYPAL_CLIENT_ID}}
+   JWT_SECRET: ${{secrets.JWT_SECRET}}
+   Access_Key_ID: ${{secrets.Access_Key_ID}}
+   Access_Secret_Key: ${{secrets.Access_Secret_Key}}  
 
 
 jobs:
@@ -33,11 +42,4 @@ jobs:
     - run: CI='' npm run build --if-present
     - run: npm stop 
     - run: npm start
-      env:
-        NODE_ENV: ${{secrets.NODE_ENV}}
-        PORT: ${{secrets.PORT}}
-        MONGO_URI: ${{secrets.MONGO_URI}}
-        PAYPAL_CLIENT_ID: ${{secrets.PAYPAL_CLIENT_ID}}
-        JWT_SECRET: ${{secrets.JWT_SECRET}}
-        Access_Key_ID: ${{secrets.Access_Key_ID}}
-        Access_Secret_Key: ${{secrets.Access_Secret_Key}}  
+     
