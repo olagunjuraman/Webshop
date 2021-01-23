@@ -25,6 +25,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    
+    - run: npm i
       env:
         NODE_ENV: ${{secrets.NODE_ENV}}
         PORT: ${{secrets.PORT}}
@@ -33,7 +35,6 @@ jobs:
         JWT_SECRET: ${{secrets.JWT_SECRET}}
         Access_Key_ID: ${{secrets.Access_Key_ID}}
         Access_Secret_Key: ${{secrets.Access_Secret_Key}} 
-    - run: npm i
     - run: npm i --prefix frontend
     - run: CI='' npm run build --if-present
     - run: npm stop 
