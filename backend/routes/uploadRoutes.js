@@ -9,8 +9,8 @@ const router = express.Router();
 dotenv.config();
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.Access_Key_ID,
-  secretAccessKey: process.env.Access_Secret_Key,
+  accessKeyId: "AKIAWRZABIBWOIORELFD",
+  secretAccessKey: "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",
   signatureVersion: "v4",
   endpoint: "s3.eu-west-2.amazonaws.com",
   region: "eu-west-2",

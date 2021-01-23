@@ -9,7 +9,13 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-dotenv.config();
+const __dirname = path.resolve();
+
+dotenv.config({ path: path.join(__dirname, ".env") });
+
+console.log(__dirname);
+
+console.log(process.env.MONGO_URI);
 
 connectDB();
 
@@ -25,8 +31,6 @@ app.use("/api/upload", uploadRoutes);
 app.get("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
-
-const __dirname = path.resolve();
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
