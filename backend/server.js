@@ -9,11 +9,12 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-const __dirname = path.resolve()
-dotenv.config({path: path.join(__dirname, "env") });
-
+const __dirname = path.resolve();
+dotenv.config({ path: path.join(__dirname, "env") });
 
 connectDB();
+
+console.log("good");
 
 const app = express();
 
