@@ -15,6 +15,7 @@ dotenv.config({ path: path.join(__dirname, "env") });
 connectDB();
 
 console.log("good");
+console.log("me");
 
 const app = express();
 
